@@ -1,1 +1,5 @@
+# cache files
 /src/__pycache__
+
+# VS code
+.vscode
