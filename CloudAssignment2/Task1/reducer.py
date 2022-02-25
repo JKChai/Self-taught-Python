@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-"""reducer.py"""
 
 # Jin Kun Chai
 # Prof. Arun Bagavathi

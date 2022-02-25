@@ -55,8 +55,8 @@ stop_words = {'just', 'while', 'me', 'further', 'no', 'any', 'up',
 #         print('%s\t%s' % (word, 1))
 
 ## In local environment
-i = 0
-with open('./Assignment2Data/CommonSense.txt') as file:
+# i = 0
+with open('./stupidInput.txt') as file:
     for line in file:
 
         ## remove all whitespace 
@@ -73,7 +73,11 @@ with open('./Assignment2Data/CommonSense.txt') as file:
             ## prevent stop words from output
             if word not in stop_words:
                 print('%s\t%s' % (word, 1))
-        i+=1
-        if i == 4:
-            break
+                with open('stupidOutput.txt', 'a') as Ofile:
+                    Ofile.write('%s\t%s' % (word, 1))
+                    Ofile.write('\n')
+
+        # i+=1
+        # if i == 4:
+        #     break
 

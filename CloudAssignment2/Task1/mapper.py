@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-"""mapper.py"""
 
 # Jin Kun Chai
 # Prof. Arun Bagavathi
@@ -8,6 +7,7 @@
 
 ## Run hadoop 
 ## mapred streaming -file /home/jchai/mapper.py -mapper /home/jchai/mapper.py -file /home/jchai/reducer.py -reducer /home/jchai/reducer.py -input /user/jchai/MapReduceTempFolder/stupidInput.txt -output /user/jchai/simpleOutput1
+## hadoop jar /usr/local/hadoop-3.3.0/share/hadoop/tools/lib/hadoop-streaming-3.3.0.jar -file /home/jchai/mapper.py -mapper /home/jchai/mapper.py -file /home/jchai/reducer.py -reducer /home/jchai/reducer.py -input /user/jchai/Assignment2Data/ -output /user/jchai/simpleOutputN
 
 ## import modules
 import os
