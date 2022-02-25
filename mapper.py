@@ -6,6 +6,9 @@
 # CS 5123
 # Due FEB 27
 
+## Run hadoop 
+## mapred streaming -file /home/jchai/mapper.py -mapper /home/jchai/mapper.py -file /home/jchai/reducer.py -reducer /home/jchai/reducer.py -input /user/jchai/MapReduceTempFolder/stupidInput.txt -output /user/jchai/simpleOutput1
+
 ## import modules
 import os
 import sys
