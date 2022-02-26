@@ -5,14 +5,19 @@
 # CS 5123
 # Due FEB 27
 
+###########
+## TASK 2
+###########
+
 ## import modules
-from operator import itemgetter
 import sys
 
+## initialize variables
 current_word = None
 current_count = 0
 word = None
 
+## collect each line of information from each file
 for line in sys.stdin:
     # remove leading and trailing whitespace
     # Similar to mapper, reducer also processes the input line by line from the intermediate mapper output
@@ -45,3 +50,4 @@ for line in sys.stdin:
 if current_word == word:
     print('%s\t%s' % (current_word, current_count))
 
+##################################### End of Line #####################################

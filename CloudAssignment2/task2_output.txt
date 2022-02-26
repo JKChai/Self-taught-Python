@@ -1,0 +1,5 @@
+CommonSense.txt	9.375188536953242
+MoonlightSonata.txt	15.526315789473685
+PridePrejudice.txt	8.548668212804834
+ScarletStudy.txt	9.069239720713732
+SherlockHolmes.txt	8.046126712793379

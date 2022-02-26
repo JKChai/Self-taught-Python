@@ -2705,3 +2705,767 @@ Job failed as tasks failed. failedMaps:1 failedReduces:0 killedMaps:0 killedRedu
                 Virtual memory (bytes) snapshot=0
 2022-02-24 20:59:16,802 ERROR streaming.StreamJob: Job not successful!
 Streaming Command Failed!
+
+jchai@hadoop-nn001:~$ hadoop jar /usr/local/hadoop-3.3.0/share/hadoop/tools/lib/hadoop-streaming-3.3.0.jar -file /home/jchai/mapper.py -mapper /home/jchai/mapper.py -file /home/jchai/reducer.py -reducer /home/jchai/reducer.py -input /user/jchai/Assignment2Data/ -output /user/jchai/simpleOutputN
+2022-02-25 09:23:08,078 WARN streaming.StreamJob: -file option is deprecated, please use generic option -files instead.
+2022-02-25 09:23:08,187 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+packageJobJar: [/home/jchai/mapper.py, /home/jchai/reducer.py, /tmp/hadoop-unjar5899820300060685900/] [] /tmp/streamjob349705829515966666.jar tmpDir=null
+2022-02-25 09:23:08,987 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at hadoop-nn001.cs.okstate.edu/192.168.122.2:8032
+2022-02-25 09:23:09,155 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at hadoop-nn001.cs.okstate.edu/192.168.122.2:8032
+2022-02-25 09:23:09,431 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/jchai/.staging/job_1639774939292_0757
+2022-02-25 09:23:09,801 INFO mapred.FileInputFormat: Total input files to process : 5
+2022-02-25 09:23:09,882 INFO mapreduce.JobSubmitter: number of splits:5
+2022-02-25 09:23:10,055 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1639774939292_0757
+2022-02-25 09:23:10,055 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2022-02-25 09:23:10,267 INFO conf.Configuration: resource-types.xml not found
+2022-02-25 09:23:10,267 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2022-02-25 09:23:10,352 INFO impl.YarnClientImpl: Submitted application application_1639774939292_0757
+2022-02-25 09:23:10,415 INFO mapreduce.Job: The url to track the job: http://hadoop-nn001.cs.okstate.edu:8088/proxy/application_1639774939292_0757/
+2022-02-25 09:23:10,417 INFO mapreduce.Job: Running job: job_1639774939292_0757
+2022-02-25 09:23:15,517 INFO mapreduce.Job: Job job_1639774939292_0757 running in uber mode : false
+2022-02-25 09:23:15,521 INFO mapreduce.Job:  map 0% reduce 0%
+2022-02-25 09:23:19,632 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000002_0, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000004/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:19,660 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000000_0, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000002/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:19,663 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000004_0, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000006/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:19,667 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000001_0, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000003/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:19,669 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000003_0, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000005/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:23,716 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000000_1, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000008/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:23,719 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000004_1, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000009/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:23,723 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000003_1, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000011/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:24,737 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000001_1, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000010/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:24,741 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000002_1, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000007/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:27,776 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000002_2, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000016/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:27,779 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000001_2, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000015/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:27,782 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000000_2, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000012/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:27,785 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000003_2, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000014/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:27,787 INFO mapreduce.Job: Task Id : attempt_1639774939292_0757_m_000004_2, Status : FAILED
+Error: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:462)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:349)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1845)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 9 more
+Caused by: java.lang.RuntimeException: Error in configuring object
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:115)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:81)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:139)
+        at org.apache.hadoop.mapred.MapRunner.configure(MapRunner.java:38)
+        ... 14 more
+Caused by: java.lang.reflect.InvocationTargetException
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.hadoop.util.ReflectionUtils.setJobConf(ReflectionUtils.java:112)
+        ... 17 more
+Caused by: java.lang.RuntimeException: configuration exception
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:222)
+        at org.apache.hadoop.streaming.PipeMapper.configure(PipeMapper.java:66)
+        ... 22 more
+Caused by: java.io.IOException: Cannot run program "/tmp/hadoop-hadoop/nm-local-dir/usercache/jchai/appcache/application_1639774939292_0757/container_1639774939292_0757_01_000013/./mapper.py": error=2, No such file or directory
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+        at org.apache.hadoop.streaming.PipeMapRed.configure(PipeMapRed.java:209)
+        ... 23 more
+Caused by: java.io.IOException: error=2, No such file or directory
+        at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+        at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+        at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+        at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+        ... 25 more
+
+2022-02-25 09:23:31,825 INFO mapreduce.Job:  map 100% reduce 100%
+2022-02-25 09:23:31,841 INFO mapreduce.Job: Job job_1639774939292_0757 failed with state FAILED due to: Task failed task_1639774939292_0757_m_000002
+Job failed as tasks failed. failedMaps:1 failedReduces:0 killedMaps:0 killedReduces: 0
+
+2022-02-25 09:23:31,950 INFO mapreduce.Job: Counters: 15
+        Job Counters
+                Failed map tasks=16
+                Killed map tasks=4
+                Killed reduce tasks=1
+                Launched map tasks=20
+                Other local map tasks=15
+                Data-local map tasks=4
+                Rack-local map tasks=1
+                Total time spent by all maps in occupied slots (ms)=226810
+                Total time spent by all reduces in occupied slots (ms)=0
+                Total time spent by all map tasks (ms)=45362
+                Total vcore-milliseconds taken by all map tasks=45362
+                Total megabyte-milliseconds taken by all map tasks=232253440
+        Map-Reduce Framework
+                CPU time spent (ms)=0
+                Physical memory (bytes) snapshot=0
+                Virtual memory (bytes) snapshot=0
+2022-02-25 09:23:31,950 ERROR streaming.StreamJob: Job not successful!
+Streaming Command Failed!
+

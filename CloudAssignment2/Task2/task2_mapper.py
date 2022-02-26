@@ -5,8 +5,9 @@
 # CS 5123
 # Due FEB 27
 
-## Run hadoop 
-## mapred streaming -file /home/jchai/mapper.py -mapper /home/jchai/mapper.py -file /home/jchai/reducer.py -reducer /home/jchai/reducer.py -input /user/jchai/MapReduceTempFolder/stupidInput.txt -output /user/jchai/simpleOutput1
+###########
+## TASK 2
+###########
 
 ## import modules
 import os
@@ -14,6 +15,7 @@ import sys
 import re
 
 ## hard code stop-words
+## this is use for removing words that are in this set
 stop_words = {'just', 'while', 'me', 'further', 'no', 'any', 'up', 
             'whom', 'above', 'a', 'are', 'the', 'where', 'him', 'our', 
             'off', 'themselves', 'their', 'once', 'don', 'on', 'against', 
@@ -31,10 +33,17 @@ stop_words = {'just', 'while', 'me', 'further', 'no', 'any', 'up',
             'do', 'and', 'her', 'to', 'all', 'from', 'than', 'these', 'more', 
             'they', 'were', 'why', 'if', 'such', 'it', 'over', 'with', 'was'}
 
-## collect each line from the given file
+## collect file name from path
+## file name is located at the end of list
+## which is done after the split()
+filepath = os.environ['map_input_file']
+filepath = filepath.split('/')
+filename = filepath[-1]
+
+## Data from each line is collected from the file
 for line in sys.stdin:
 
-    ## remove all whitespace 
+    ## remove leading & trailing whitespace 
     line = line.strip()
     ## split line into list based on whitespace
     words = line.split()
@@ -43,13 +52,29 @@ for line in sys.stdin:
     ## this loop does 3 things
     ## 1. Convert uppercase to lowercase
     ## 2. Remove non-alphabetical characters
-    ## 3. Prevent stopwords to output
+    ## 3. count word if there is at least 1 alphabetical character
+
+    ## initialize counter use for count number of words in a line
+    counter = 0
+
     for word in words:
-        ## convert upper case to lower case
+        ## convert upper case letter to lower case letter
         word = word.lower()
-        ## only keep alphabetical character
+
+        ## only keep alphabetical character such as 
+        ## removing numerics & symbols & spaces character
+        ## restrict to small or big cap letters
         word = re.sub("[^a-zA-Z]+", '', word)
-        ## prevent stop words from output
-        if word not in stop_words:
-            ## output key-value as (word, 1) 
-            print('%s\t%s' % (word, 1))
+
+        ## if statement below remove words that return nothing which
+        ## cause by missing alphabetical word after regex filtering
+        ## increment word only is alphabtical word
+        ## this 2-line codes prevent empty word to output        
+        if len(word) > 0:
+            counter += 1      
+
+    ## print by line
+    ## output as (<file_name>, <number of word in line>)
+    print('%s\t%s' % (filename, counter))
+
+##################################### End of Line #####################################

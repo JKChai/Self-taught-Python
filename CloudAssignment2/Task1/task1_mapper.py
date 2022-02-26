@@ -5,16 +5,16 @@
 # CS 5123
 # Due FEB 27
 
-## Run hadoop 
-## mapred streaming -file /home/jchai/mapper.py -mapper /home/jchai/mapper.py -file /home/jchai/reducer.py -reducer /home/jchai/reducer.py -input /user/jchai/MapReduceTempFolder/stupidInput.txt -output /user/jchai/simpleOutput1
-## hadoop jar /usr/local/hadoop-3.3.0/share/hadoop/tools/lib/hadoop-streaming-3.3.0.jar -file /home/jchai/mapper.py -mapper /home/jchai/mapper.py -file /home/jchai/reducer.py -reducer /home/jchai/reducer.py -input /user/jchai/Assignment2Data/ -output /user/jchai/simpleOutputN
+###########
+## TASK 1
+###########
 
 ## import modules
-import os
 import sys
 import re
 
 ## hard code stop-words
+## this is use for removing words that are in this set
 stop_words = {'just', 'while', 'me', 'further', 'no', 'any', 'up', 
             'whom', 'above', 'a', 'are', 'the', 'where', 'him', 'our', 
             'off', 'themselves', 'their', 'once', 'don', 'on', 'against', 
@@ -32,25 +32,41 @@ stop_words = {'just', 'while', 'me', 'further', 'no', 'any', 'up',
             'do', 'and', 'her', 'to', 'all', 'from', 'than', 'these', 'more', 
             'they', 'were', 'why', 'if', 'such', 'it', 'over', 'with', 'was'}
 
-## collect each line from the given file
+## Data from each line is collected from the file
 for line in sys.stdin:
 
-    ## remove all whitespace 
+    ## remove leading & trailing whitespace 
     line = line.strip()
     ## split line into list based on whitespace
     words = line.split()
 
     ## iterate each word from list of words
-    ## this loop does 3 things
+    ## this loop does 4 things
     ## 1. Convert uppercase to lowercase
     ## 2. Remove non-alphabetical characters
-    ## 3. Prevent stopwords to output
+    ## 3. Ignore empty word with continue statement
+    ## 4. Prevent stopwords to output
     for word in words:
-        ## convert upper case to lower case
+        ## convert upper case letter to lower case letter
         word = word.lower()
-        ## only keep alphabetical character
+
+        ## only keep alphabetical character such as 
+        ## removing numerics & symbols & spaces character
+        ## restrict to small or big cap letters
         word = re.sub("[^a-zA-Z]+", '', word)
+
+        ## if statement below remove words that return nothing which
+        ## cause by missing alphabetical words after regex filtering
+        ## continue statement break the code process after its line
+        ## then run from the for loop -- for word in words:
+        ## this 2-line codes prevent empty word to output        
+        if len(word) <= 1:
+            continue      
+
         ## prevent stop words from output
+        ## check the sets given from above
         if word not in stop_words:
             ## output key-value as (word, 1) 
             print('%s\t%s' % (word, 1))
+
+##################################### End of Line #####################################
