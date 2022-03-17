@@ -1,6 +1,6 @@
 # Self-taught-Python
 
-Keep track of Python learning process
+Keep track of Python learning process by inclduding works and experimental codes store into the repository to collaborate with friends for improvement.
 
 ## Object Oriented Programming (OOP)
 
