@@ -9,6 +9,7 @@ Training myself to be great & better in solving different programming problems, 
 - [X] Q217 Contains Duplicate
 - [X] Q53 Maximum Subarray
 - [X] Q1 Two Sum
+- [X] Q88 Merge Sorted Array
 
 ## Algorithm Completed
 
