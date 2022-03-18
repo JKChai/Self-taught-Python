@@ -7,7 +7,7 @@ Training myself to be great & better in solving different programming problems, 
 ### Array
 
 - [X] Q217 Contains Duplicate
-- [] Q53 Maximum Subarray
+- [X] Q53 Maximum Subarray
 
 ## Algorithm Completed
 
@@ -16,4 +16,4 @@ Training myself to be great & better in solving different programming problems, 
 ## Practice Completed
 
 - [X] Q856 Score of Parentheses
-
+- [X] Q316 Remove Duplicate Letters
