@@ -8,6 +8,7 @@ Training myself to be great & better in solving different programming problems, 
 
 - [X] Q217 Contains Duplicate
 - [X] Q53 Maximum Subarray
+- [X] Q1 Two Sum
 
 ## Algorithm Completed
 
@@ -17,3 +18,4 @@ Training myself to be great & better in solving different programming problems, 
 
 - [X] Q856 Score of Parentheses
 - [X] Q316 Remove Duplicate Letters
+- [X] Q946 Validate Stack Sequences
