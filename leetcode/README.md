@@ -11,7 +11,7 @@ Training myself to be great & better in solving different programming problems, 
 - [X] Q1 Two Sum
 - [X] Q88 Merge Sorted Array
 - [X] Q350 Intersection of Two Arrays II
-- [ ] Q
+- [x] Q121 Best Time to Buy and Sell Stock
 
 ## Algorithm Completed
 
