@@ -10,6 +10,8 @@ Training myself to be great & better in solving different programming problems, 
 - [X] Q53 Maximum Subarray
 - [X] Q1 Two Sum
 - [X] Q88 Merge Sorted Array
+- [X] Q350 Intersection of Two Arrays II
+- [ ] Q
 
 ## Algorithm Completed
 
