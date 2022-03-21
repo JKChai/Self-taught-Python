@@ -12,6 +12,7 @@ Training myself to be great & better in solving different programming problems, 
 - [X] Q88 Merge Sorted Array
 - [X] Q350 Intersection of Two Arrays II
 - [x] Q121 Best Time to Buy and Sell Stock
+- [X] Q566 Reshape the Matrix
 
 ## Algorithm Completed
 
