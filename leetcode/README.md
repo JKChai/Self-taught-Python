@@ -15,6 +15,11 @@ Training myself to be great & better in solving different programming problems, 
 - [X] Q566 Reshape the Matrix
 - [X] Q118 Pascal's Triangle
 - [X] Q36 Valid Sudoku
+- [X] Q74 Search a 2D Matrix
+
+### String
+- []
+
 
 ## Algorithm Completed
 
