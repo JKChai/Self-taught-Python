@@ -18,7 +18,7 @@ Training myself to be great & better in solving different programming problems, 
 - [X] Q74 Search a 2D Matrix
 
 ### String
-- []
+- [] Q387 First Unique Character in a String
 
 
 ## Algorithm Completed
