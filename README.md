@@ -2,6 +2,10 @@
 
 Keep track of Python learning process by inclduding works and experimental codes store into the repository to collaborate with friends for improvement.
 
+## Building Socket Server
+
+Use [socket](https://docs.python.org/3/library/socket.html) modules to build own sockets.
+
 ## Object Oriented Programming (OOP)
 
 * Two important aspects of OOP: inheritance & composition
