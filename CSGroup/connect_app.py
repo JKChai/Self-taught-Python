@@ -1,17 +1,20 @@
-import socket
 import sys
-import requests
-import requests_oauthlib
 import json
 import bleach
+import socket
+import requests
+import requests_oauthlib
+
 from bs4 import BeautifulSoup
 
 
 # Include your Twitter account details
-ACCESS_TOKEN = '838123377525153793-hcHH4ZxCCIZLX3VyoY5q5tNxTe9Rx19'
-ACCESS_SECRET = 'okxo1grjZRnvpcwYsN0AeOzvOQdMDoIrP7l7qUgzcdMwM'
-CONSUMER_KEY = 'QDgoiUYXDMmn1fyCBCxcYsBfc'
-CONSUMER_SECRET = '8puNh3Lp6rM6pNZ2lvgkA5uYwbBXDUFGtwWxsS7sX1dCO8gDiN'
+secret = json.loads('./secret.json')
+
+ACCESS_TOKEN = secret['ACCESS_TOKEN']
+ACCESS_SECRET = secret['ACCESS_SECRET']
+CONSUMER_KEY = secret['CONSUMER_KEY']
+CONSUMER_SECRET = secret['CONSUMER_SECRET']
 my_auth = requests_oauthlib.OAuth1(CONSUMER_KEY, CONSUMER_SECRET,ACCESS_TOKEN, ACCESS_SECRET)
 
 
