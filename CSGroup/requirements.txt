@@ -1,0 +1,4 @@
+bs4
+bleach
+requests
+requests_oauthlib
