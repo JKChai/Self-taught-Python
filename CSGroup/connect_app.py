@@ -1,6 +1,5 @@
 import sys
 import json
-import bleach
 import socket
 import requests
 import requests_oauthlib
@@ -58,7 +57,7 @@ def send_tweets_to_spark(http_resp, tcp_connection):
    
 
 TCP_IP = 'localhost'
-TCP_PORT = 9000
+TCP_PORT = 9009
 conn = None
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 

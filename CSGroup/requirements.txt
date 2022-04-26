@@ -1,4 +1,7 @@
 bs4
 bleach
+findspark
+matplotlib
+pandas
 requests
 requests_oauthlib
