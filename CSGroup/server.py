@@ -1,12 +1,14 @@
+import csv
+import time
 import socket
 
 ### received data
-path = r'C:\Users\chai8\Downloads\TweepyWork\ArunDataset'
-clean_media = path + r'\Cleaned_domain.csv'
+path = 'C:\\Users\\chai8\\Downloads\\TweepyWork\\'
+data = path + 'dingyi.csv'
 
 ### established server side socket
 
-host = ''
+host = 'localhost'
 port = 3090
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -23,10 +25,22 @@ while True:
     try:
 
         ## PROCESSED DATA
-        with open(clean_media, 'rb') as file:
-            lines = file.readlines()
+
+        with open(data, 'r', encoding='UTF-8') as file:
+            lines = csv.reader(file)
+            # print(lines)
 
             for idx, line in enumerate(lines):
+                
+                ## user & location
+                user = line[0]
+                location = line[1]
+
+                ## join list into string
+                line = ' '.join(line[2:])
+                line = line.replace('\n', '')
+
+                # line = line.encode(encoding = 'UTF-8')
 
                 data = conn.recv(1024)
 
@@ -36,8 +50,11 @@ while True:
 
                 print(f'[SERVER] Received from CLIENT : \n\t {repr(data)}')
 
-                conn.send(line)
+                conn.send(bytes(line, 'utf-8'))
                 print(f'[SERVER] Send Data :: line {idx}')
+
+                ## slow the process
+                time.sleep(1)
 
         ## last handshake from server to client before breaking
         data = conn.recv(1024)

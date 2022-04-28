@@ -8,7 +8,9 @@ from bs4 import BeautifulSoup
 
 
 # Include your Twitter account details
-secret = json.loads('./secret.json')
+file = open('secret.json')
+secret = json.load(file)
+file.close()
 
 ACCESS_TOKEN = secret['ACCESS_TOKEN']
 ACCESS_SECRET = secret['ACCESS_SECRET']
@@ -57,7 +59,7 @@ def send_tweets_to_spark(http_resp, tcp_connection):
    
 
 TCP_IP = 'localhost'
-TCP_PORT = 9009
+TCP_PORT = 3000
 conn = None
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 

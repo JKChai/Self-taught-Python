@@ -1,7 +1,7 @@
-from msilib.schema import Binary
 import socket
 
-host = socket.gethostname()
+# host = socket.gethostname()
+host = "localhost"
 port = 3090
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -13,7 +13,14 @@ while True:
     s.sendall(b'[CLIENT] Data Sent :: Loop ' + str(counter).encode('ascii')) ## send data to server
 
     data = s.recv(1024) ## received data from server
-    print(f'[CLIENT] Data Received: \n{repr(data)}')
+    human_readable = str(data, "utf-8")
+    print(f'[CLIENT] Data Received: \n{human_readable}')
+
+    #######################################
+
+    ## process data
+
+    #######################################
 
     counter += 1
 
