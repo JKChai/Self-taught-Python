@@ -2,6 +2,8 @@
 
 Keep track of Python learning process by inclduding works and experimental codes store into the repository to collaborate with friends for improvement.
 
+Below are some notes taken from the author's learning journey and is intended to help support the author itself and not for others.
+
 ## Building Socket Server
 
 Use [socket](https://docs.python.org/3/library/socket.html) modules to build own sockets.
@@ -16,6 +18,7 @@ Use [socket](https://docs.python.org/3/library/socket.html) modules to build own
   * class objects - shared by all instances; default behaviors
   * instance objects - owned by the instance only and vary for different instances
 * `__init__` is the most common operator overloading method known as constructor for initializing object' state
+* "Classes and objects both have attributes and methods, but the difference is that a class is an abstract template, while an object is a concrete representation of a class."
 
 ### Simplify OOP processes
 
