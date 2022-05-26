@@ -14,12 +14,14 @@ Use [socket](https://docs.python.org/3/library/socket.html) modules to build own
 * Three distinct differences from modules: multiple instances, customization via inheritance, operator overloading
 * Both classes and modules are namespaces for attaching attributes but a class is a statement within a file while module reflects an entire file
 * OOP expression in Python: `object.attribute`
-* Two types of OOP object: class objects & instance osbjects
+* Two types of OOP object: class objects & instance objects
   * class objects - shared by all instances; default behaviors
   * instance objects - owned by the instance only and vary for different instances
 * `__init__` is the most common operator overloading method known as constructor for initializing object' state
 * "Classes and objects both have attributes and methods, but the difference is that a class is an abstract template, while an object is a concrete representation of a class."
  * E.g., `Object.method(attribute)` will be interpreted as `Class.method(Object, attribute)`
+* Class-level VS Instance-level data
+ * Class level data such as class attributes are global constants in a class
 
 ### Simplify OOP processes
 
