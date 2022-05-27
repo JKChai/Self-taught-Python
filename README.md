@@ -29,6 +29,12 @@ Use [socket](https://docs.python.org/3/library/socket.html) modules to build own
 ### Class inheritance
 
 * To fullfill DRY (Don't repeat yourself) & all about code reuse
+* Parent `class` is inherited by being called by a child `class` where child `class` have accesed to all parents data 
+```python
+class child(parent):
+  # do something
+```
+* Inheritance is being defined by DataCamp as "is-a" relationship, e.g., a child class is a parent class. This is saying that the instance of a child class is also an instance of parent class because this child class' instance inherited all parent class properties.
 
 ### Simplify OOP processes
 
