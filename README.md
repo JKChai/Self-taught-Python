@@ -49,6 +49,21 @@ class child(parent):
 * `__class__` - look for object's class of an instance
 * `__dict__` - look for class object's attributes of an instance
 
+### Comparison Operator Overloading
+
+* Use for comparing 2 objects
+
+| Operator | Method |
+|----|----|
+| `==` | `__eq__()` |
+| `!=` | `__ne__()` |
+| `>=` | `__ge__()` |
+| `<=` | `__le__()` |
+| `>` | `__gt__()` |
+| `<` | `__lt__()` |
+
+* `__hash__()` method for comparing dictionary key objects
+
 ## Keyword Concepts
 
 * class - design to create and manage new objects & support *inheritance*
