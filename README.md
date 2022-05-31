@@ -49,7 +49,7 @@ class child(parent):
 * `__class__` - look for object's class of an instance
 * `__dict__` - look for class object's attributes of an instance
 
-### Comparison Operator Overloading
+#### Comparison
 
 * Use for comparing 2 objects
 
@@ -63,6 +63,22 @@ class child(parent):
 | `<` | `__lt__()` |
 
 * `__hash__()` method for comparing dictionary key objects
+
+#### String representation
+
+* `__str__()` - informal, for end user (string representation)
+* `__repr__()` - formal, for developer (reproducible representation)
+
+### Custom Exceptions
+
+* For Developers not users, can be done with inheritance, e.g.,
+```python
+class BaseError(ValueError):
+  pass
+```
+* `raise` keyword terminates the program after returning the given message or object
+
+> It's better to include an except block for a child exception before the block for a parent exception, otherwise the child exceptions will be always be caught in the parent block, and the except block for the child will never be executed.
 
 ## Keyword Concepts
 
