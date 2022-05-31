@@ -8,6 +8,8 @@ Below are some notes taken from the author's learning journey and is intended to
 
 Use [socket](https://docs.python.org/3/library/socket.html) modules to build own sockets.
 
+---
+
 ## Object Oriented Programming (OOP)
 
 * Two important aspects of OOP: inheritance & composition
@@ -79,6 +81,49 @@ class BaseError(ValueError):
 * `raise` keyword terminates the program after returning the given message or object
 
 > It's better to include an except block for a child exception before the block for a parent exception, otherwise the child exceptions will be always be caught in the parent block, and the except block for the child will never be executed.
+
+### Design Principles
+
+* Idea - Interface is all that matters
+* OOP should design to handle polymorphism; the bottom line is if LSP is violated, the class object should not use inheritance
+> **Liskov Substitution Principle**
+>> Base class should be interchangeable with any of its subclasses without altering any properties of the program 
+
+#### Private Attributes
+
+* naming conventions - leading `_` is for internal details of implementation while leading `__` are used for attributes that should not be inherited to avoid name clashes in child classes
+
+#### Properties
+
+* Control attribute access including checking the validity of the values or make attributes read-only
+* Use `@property` decorator for built-in access control and uses provide methods `@attr.setter`, `@attr.getter`, & `@attr.deleter` for modifying, retrieving, and deleter purposes
+
+### More & More
+
+#### Functionality
+
+* Multiple inheritance & mixin classes
+* Overriding built-in operators like `+`
+* `__getattr__()` and `__setattr__()`
+* Custom iterators
+* Abstract base classes
+* Dataclasses
+
+#### Design
+
+* *SOLID* Principles
+ * Single-responsibility principle
+ * Open-closed principle
+ * Liskov substitution principle
+ * Interface segregation principle
+ * Dependency inversion principle
+
+---
+
+## Introduction to Airflow
+
+
+---
 
 ## Keyword Concepts
 
