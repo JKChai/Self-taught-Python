@@ -122,6 +122,27 @@ class BaseError(ValueError):
 
 ## Introduction to Airflow
 
+* Airflow is a platform to program workflows
+* Use for Creating, Scheduling, and monitoring data workflow
+
+* E.g.,
+```bash
+## Executing Task using airflow run command
+## airflow run <dag_id> <task_id> <start_date>
+airflow run etl_pipeline download_file 2020-01-08
+```
+
+* DAG (Airflow Context) - Directed Acyclic Graphs that represents the set of tasks that make up your workflow
+ * Directed - An inherent flow representing depencies between components
+ * Acyclic - Does not loop/cycle/repeat
+ * Graph - Represent components and the relationships (or depencies) between them
+
+* When to use Command Line VS Python?
+| Command Line | Python |
+|----|----|
+| Start Airflow Processes | Create a DAG |
+| Manually Run DAGs/Tasks | Edit individual/properties of a DAG |
+| Get Logging info from Airflow | |
 
 ---
 
@@ -134,3 +155,4 @@ class BaseError(ValueError):
 * tactical mode - for short-supply
 * methods - functions attached to classes as attributes
 * polymorphism - care what it does and not what it is
+* Data Engineer - Taking any action involving data and turning into something reliable, repetable, and maintainable process
