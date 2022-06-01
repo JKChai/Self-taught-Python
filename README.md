@@ -133,9 +133,9 @@ airflow run etl_pipeline download_file 2020-01-08
 ```
 
 * DAG (Airflow Context) - Directed Acyclic Graphs that represents the set of tasks that make up your workflow
- * Directed - An inherent flow representing depencies between components
- * Acyclic - Does not loop/cycle/repeat
- * Graph - Represent components and the relationships (or depencies) between them
+  * Directed - An inherent flow representing depencies between components
+  * Acyclic - Does not loop/cycle/repeat
+  * Graph - Represent components and the relationships (or depencies) between them
 
 * When to use Command Line VS Python?
 | Command Line | Python |
@@ -144,6 +144,32 @@ airflow run etl_pipeline download_file 2020-01-08
 | Manually Run DAGs/Tasks | Edit individual/properties of a DAG |
 | Get Logging info from Airflow | |
 
+* `Operators` is the smallest component in Airflow representing a single task, usually run independently, and do not share info (in module `airflow.operators`)
+* Task dependency flows from upstream to downstream representing using bitwise operator `>>`
+* cron scheduler use for scheduling
+```shell
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of the month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;
+# │ │ │ │ │                                   7 is also Sunday on some systems)
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * * <command to execute>
+```
+
+* Airflow Sensors
+  * Operation that wait for certain condition to be true
+  * Module `airflow.contrib.sensors`
+
+* Airflow Executor
+  * Executor Run Tasks
+  * Different Executors handle running the tasks differently
+
+* SLA (Airflow Context) - Amount of Time a task or a DAG should require to run
+* *SLA Miss* - Any time the task / DAG does not meet the expected timing
+ 
 ---
 
 ## Keyword Concepts
@@ -156,3 +182,4 @@ airflow run etl_pipeline download_file 2020-01-08
 * methods - functions attached to classes as attributes
 * polymorphism - care what it does and not what it is
 * Data Engineer - Taking any action involving data and turning into something reliable, repetable, and maintainable process
+* SLA - Service Level Agreement
