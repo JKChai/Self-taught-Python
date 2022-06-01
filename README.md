@@ -170,6 +170,13 @@ airflow run etl_pipeline download_file 2020-01-08
 * SLA (Airflow Context) - Amount of Time a task or a DAG should require to run
 * *SLA Miss* - Any time the task / DAG does not meet the expected timing
  
+* *template* - Allow substituting information during DAG run; provide added flexibility when defining tasks; are created using the `Jinja` templating language
+* When using a single task, all entries would succeed or fail as a single task. Separate operators allow for better monitoring and scheduling of these tasks.
+
+* *Branching* - Provides conditional logic
+
+* Create Production Pipeline with all learned topics
+
 ---
 
 ## Keyword Concepts
