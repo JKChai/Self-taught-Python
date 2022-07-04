@@ -8,6 +8,8 @@ Below are some notes taken from the author's learning journey and is intended to
 
 Use [socket](https://docs.python.org/3/library/socket.html) modules to build own sockets.
 
+---
+
 ## Object Oriented Programming (OOP)
 
 * Two important aspects of OOP: inheritance & composition
@@ -49,7 +51,7 @@ class child(parent):
 * `__class__` - look for object's class of an instance
 * `__dict__` - look for class object's attributes of an instance
 
-### Comparison Operator Overloading
+#### Comparison
 
 * Use for comparing 2 objects
 
@@ -64,6 +66,119 @@ class child(parent):
 
 * `__hash__()` method for comparing dictionary key objects
 
+#### String representation
+
+* `__str__()` - informal, for end user (string representation)
+* `__repr__()` - formal, for developer (reproducible representation)
+
+### Custom Exceptions
+
+* For Developers not users, can be done with inheritance, e.g.,
+```python
+class BaseError(ValueError):
+  pass
+```
+* `raise` keyword terminates the program after returning the given message or object
+
+> It's better to include an except block for a child exception before the block for a parent exception, otherwise the child exceptions will be always be caught in the parent block, and the except block for the child will never be executed.
+
+### Design Principles
+
+* Idea - Interface is all that matters
+* OOP should design to handle polymorphism; the bottom line is if LSP is violated, the class object should not use inheritance
+> **Liskov Substitution Principle**
+>> Base class should be interchangeable with any of its subclasses without altering any properties of the program 
+
+#### Private Attributes
+
+* naming conventions - leading `_` is for internal details of implementation while leading `__` are used for attributes that should not be inherited to avoid name clashes in child classes
+
+#### Properties
+
+* Control attribute access including checking the validity of the values or make attributes read-only
+* Use `@property` decorator for built-in access control and uses provide methods `@attr.setter`, `@attr.getter`, & `@attr.deleter` for modifying, retrieving, and deleter purposes
+
+### More & More
+
+#### Functionality
+
+* Multiple inheritance & mixin classes
+* Overriding built-in operators like `+`
+* `__getattr__()` and `__setattr__()`
+* Custom iterators
+* Abstract base classes
+* Dataclasses
+
+#### Design
+
+* *SOLID* Principles
+ * Single-responsibility principle
+ * Open-closed principle
+ * Liskov substitution principle
+ * Interface segregation principle
+ * Dependency inversion principle
+
+---
+
+## Introduction to Airflow
+
+* Airflow is a platform to program workflows
+* Use for Creating, Scheduling, and monitoring data workflow
+
+* E.g.,
+```bash
+## Executing Task using airflow run command
+## airflow run <dag_id> <task_id> <start_date>
+airflow run etl_pipeline download_file 2020-01-08
+```
+
+* DAG (Airflow Context) - Directed Acyclic Graphs that represents the set of tasks that make up your workflow
+  * Directed - An inherent flow representing depencies between components
+  * Acyclic - Does not loop/cycle/repeat
+  * Graph - Represent components and the relationships (or depencies) between them
+
+* When to use Command Line VS Python?
+| Command Line | Python |
+|----|----|
+| Start Airflow Processes | Create a DAG |
+| Manually Run DAGs/Tasks | Edit individual/properties of a DAG |
+| Get Logging info from Airflow | |
+
+* `Operators` is the smallest component in Airflow representing a single task, usually run independently, and do not share info (in module `airflow.operators`)
+* Task dependency flows from upstream to downstream representing using bitwise operator `>>`
+* cron scheduler use for scheduling
+```shell
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of the month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;
+# │ │ │ │ │                                   7 is also Sunday on some systems)
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * * <command to execute>
+```
+
+* Airflow Sensors
+  * Operation that wait for certain condition to be true
+  * Module `airflow.contrib.sensors`
+
+* Airflow Executor
+  * Executor Run Tasks
+  * Different Executors handle running the tasks differently
+
+* SLA (Airflow Context) - Amount of Time a task or a DAG should require to run
+* *SLA Miss* - Any time the task / DAG does not meet the expected timing
+ 
+* *template* - Allow substituting information during DAG run; provide added flexibility when defining tasks; are created using the `Jinja` templating language
+* When using a single task, all entries would succeed or fail as a single task. Separate operators allow for better monitoring and scheduling of these tasks.
+
+* *Branching* - Provides conditional logic
+
+* Create Production Pipeline with all learned topics
+
+---
+
 ## Keyword Concepts
 
 * class - design to create and manage new objects & support *inheritance*
@@ -73,3 +188,5 @@ class child(parent):
 * tactical mode - for short-supply
 * methods - functions attached to classes as attributes
 * polymorphism - care what it does and not what it is
+* Data Engineer - Taking any action involving data and turning into something reliable, repetable, and maintainable process
+* SLA - Service Level Agreement
