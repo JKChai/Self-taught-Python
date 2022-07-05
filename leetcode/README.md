@@ -16,6 +16,8 @@ Training myself to be great & better in solving different programming problems, 
 - [X] Q118 Pascal's Triangle
 - [X] Q36 Valid Sudoku
 - [X] Q74 Search a 2D Matrix
+- [x] Q27 Remove Element
+- [x] Q26 Remove Duplicates from Sorted Array
 
 ### String
 - [] Q387 First Unique Character in a String
