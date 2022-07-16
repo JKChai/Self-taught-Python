@@ -2,7 +2,7 @@
 
 Training myself to be great & better in solving different programming problems, in hope, to be able to learn all skills that a CS student would.
 
-## Data Structure Completed
+## Data Structure & Algorithms
 
 ### Array
 
@@ -20,12 +20,16 @@ Training myself to be great & better in solving different programming problems, 
 - [x] Q26 Remove Duplicates from Sorted Array
 
 ### String
+
 - [] Q387 First Unique Character in a String
 
+### Math
 
-## Algorithm Completed
+- [x] Q2235 Add Two Integers
 
-- []
+## Tree
+
+- [x] Q2236 Root Equals Sum of Children
 
 ## Practice Completed
 
