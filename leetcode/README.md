@@ -18,6 +18,7 @@ Training myself to be great & better in solving different programming problems, 
 - [X] Q74 Search a 2D Matrix
 - [x] Q27 Remove Element
 - [x] Q26 Remove Duplicates from Sorted Array
+- [x] Q1480 Running Sum of 1-D array
 
 ### String
 
